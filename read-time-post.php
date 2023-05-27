@@ -22,9 +22,7 @@ function reading_time() {
   $totalreadingtime = $readingtime;
   return $totalreadingtime;
 }
-
 function read_time( $atts ){
 	return reading_time();
 }
-
 add_shortcode( 'reading_time', 'read_time' );
