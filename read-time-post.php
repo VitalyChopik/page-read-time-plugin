@@ -3,7 +3,6 @@
 /**
  * Plugin Name: Page Read Time
  * Description: The plugin is designed to automatically add the time it will take the user to read the post
-//  * Plugin URI:  Ссылка на инфо о плагине
  * Author URI:  Ссылка на автора
  * Author:      https://github.com/VitalyChopik/
  *
@@ -28,4 +27,4 @@ function read_time( $atts ){
 	return reading_time();
 }
 
-add_shortcode( 'read-time', 'read_time' );
+add_shortcode( 'reading_time', 'read_time' );
