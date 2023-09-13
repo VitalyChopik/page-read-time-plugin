@@ -12,17 +12,22 @@
  * License:     GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  *
- * Version:     1.0
+ * Version:     1.1
  */
 
-function reading_time() {
-  $content = get_post_field( 'post_content', $post->ID );
-  $word_count = str_word_count( strip_tags( $content ) );
-  $readingtime = ceil($word_count / 200);
-  $totalreadingtime = $readingtime;
-  return $totalreadingtime;
+ function reading_time() {
+  $content = get_post_field('post_content', get_the_ID());
+  $word_count = str_word_count(strip_tags($content));
+  $reading_time = ceil($word_count / 200); // Средняя скорость чтения 200 слов в минуту
+
+  return $reading_time;
 }
-function read_time( $atts ){
-	return reading_time();
+
+function read_time_shortcode() {
+  ob_start();
+  $reading_time = reading_time();
+  echo '<span class="reading-time">' . $reading_time . ' минут(ы)</span>';
+  return ob_get_clean();
 }
-add_shortcode( 'reading_time', 'read_time' );
+
+add_shortcode('reading_time', 'read_time_shortcode');
